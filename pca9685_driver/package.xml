@@ -8,7 +8,7 @@
     ROS2 Jazzy driver node for the PCA9685 16-channel I2C PWM controller.
     Provides normalized and raw PWM control via topics and services.
   </description>
-  <maintainer email="you@example.com">Your Name</maintainer>
+  <maintainer email="example@example.com">Krymorn</maintainer>
   <license>MIT</license>
 
   <buildtool_depend>ament_python</buildtool_depend>
