@@ -2,13 +2,13 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd"
             schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>pca9685_driver</name>
+  <name>PCA9685_ROS2_Jazzy</name>
   <version>1.0.0</version>
   <description>
     ROS2 Jazzy driver node for the PCA9685 16-channel I2C PWM controller.
     Provides normalized and raw PWM control via topics and services.
   </description>
-  <maintainer email="you@example.com">Your Name</maintainer>
+  <maintainer email="cymartinbell@gmail.com">Krymorn</maintainer>
   <license>MIT</license>
 
   <buildtool_depend>ament_python</buildtool_depend>
