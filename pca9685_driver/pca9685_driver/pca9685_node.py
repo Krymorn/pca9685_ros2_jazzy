@@ -211,7 +211,7 @@ class PCA9685Node(Node):
             self._driver = PCA9685(i2c_bus=i2c_bus, i2c_address=i2c_address)
             self._driver.set_pwm_frequency(frequency)
         except PCA9685Error as exc:
-            self.get_logger().fatal("Hardware initialisation failed: %s", exc)
+            self.get_logger().fatal(f"Hardware initialisation failed: {exc}")
             raise
 
     def _create_subscriptions(self) -> None:
@@ -361,7 +361,7 @@ class PCA9685Node(Node):
         except (PCA9685Error, ValueError) as exc:
             response.success = False
             response.message = str(exc)
-            self.get_logger().error("set_pwm_raw service error: %s", exc)
+            self.get_logger().error(f"set_pwm_raw service error: {exc}")
 
         return response
 
@@ -379,13 +379,13 @@ class PCA9685Node(Node):
             except PCA9685Error as exc:
                 response.success = False
                 response.message = str(exc)
-                self.get_logger().error("enable_output(False) error: %s", exc)
+                self.get_logger().error(f"enable_output(False) error: {exc}")
                 return response
 
         state = "enabled" if self._output_enabled else "disabled"
         response.success = True
         response.message = f"PWM output {state}."
-        self.get_logger().info("PWM output %s.", state)
+        self.get_logger().info(f"PWM output {state}.")
         return response
 
     # ── Private helpers ───────────────────────────────────────────────────────
@@ -397,10 +397,9 @@ class PCA9685Node(Node):
             self._driver.set_pulse_width_us(channel, pulse_us)
         except (PCA9685Error, ValueError) as exc:
             self.get_logger().error(
-                "Channel %d — failed to set %.1f µs: %s",
+                f"Channel %d — failed to set %.1f µs: {exc}",
                 channel,
                 pulse_us,
-                exc,
             )
 
     def _validate_channel(self, channel: int) -> bool:
@@ -423,7 +422,7 @@ class PCA9685Node(Node):
                 self._driver.close()
                 self.get_logger().info("PCA9685 I2C bus released.")
             except Exception as exc:  # noqa: BLE001
-                self.get_logger().error("Error during shutdown: %s", exc)
+                self.get_logger().error(f"Error during shutdown: {exc}")
         super().destroy_node()
 
 
@@ -441,7 +440,7 @@ def main(args: list[str] | None = None) -> None:
         pass  # Normal termination via Ctrl-C; suppress the traceback.
     except PCA9685Error as exc:
         if node:
-            node.get_logger().fatal("Fatal hardware error: %s", exc)
+            node.get_logger().fatal(f"Fatal hardware error: {exc}")
         raise SystemExit(1) from exc
     finally:
         if node is not None:
