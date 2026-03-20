@@ -1,0 +1,18 @@
+# Set raw PCA9685 PWM ticks for a single channel.
+#
+# The PCA9685 PWM period is divided into 4096 ticks (0–4095).
+# The output goes HIGH at on_tick and LOW at off_tick within each period.
+# For a standard 0 % duty cycle, set on_tick=0, off_tick=0.
+# For a standard duty cycle, set on_tick=0 and vary off_tick (0–4095).
+
+# Channel index (0–15).
+uint8 channel
+
+# Tick at which the output goes HIGH (0–4095). Typically 0.
+uint16 on_tick
+
+# Tick at which the output goes LOW (0–4095).
+uint16 off_tick
+---
+bool success
+string message

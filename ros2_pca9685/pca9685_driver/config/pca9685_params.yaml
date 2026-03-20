@@ -1,0 +1,82 @@
+# pca9685_params.yaml
+# Default parameter file for the pca9685_driver node.
+#
+# Copy this file and customise it for your specific robot or application.
+# Pass the path to ros2 launch via the params_file argument:
+#
+#   ros2 launch pca9685_driver pca9685.launch.py \
+#       params_file:=/path/to/my_robot_params.yaml
+
+pca9685_node:
+  ros__parameters:
+
+    # ── Hardware ──────────────────────────────────────────────────────────────
+    # I2C bus number.  On most Linux SBCs bus 1 maps to /dev/i2c-1.
+    i2c_bus: 1
+
+    # 7-bit I2C address of the PCA9685 in decimal.
+    # Default is 64 (0x40). Hardware address pins A0-A5 can set it to 0x40-0x7F.
+    i2c_address: 64
+
+    # PWM carrier frequency shared by all 16 channels (Hz).
+    # Standard RC servo / ESC value is 50 Hz.
+    # Higher frequencies (e.g. 333 Hz) suit digital servos and LED dimming.
+    pwm_frequency: 50.0
+
+    # ── Default pulse range ───────────────────────────────────────────────────
+    # Applied to every channel unless a per-channel override is present below.
+    # A normalised command of 0.0 maps to min_pulse_us; 1.0 maps to max_pulse_us.
+    default_min_pulse_us: 1000.0
+    default_max_pulse_us: 2000.0
+
+    # ── Per-channel overrides (optional) ─────────────────────────────────────
+    # Uncomment and adjust any channel whose range differs from the defaults.
+    # All values are in microseconds.
+    #
+    # channel_0_min_pulse_us: 500.0
+    # channel_0_max_pulse_us: 2500.0
+    #
+    # channel_1_min_pulse_us: 1000.0
+    # channel_1_max_pulse_us: 2000.0
+    #
+    # channel_2_min_pulse_us: 1000.0
+    # channel_2_max_pulse_us: 2000.0
+    #
+    # channel_3_min_pulse_us: 1000.0
+    # channel_3_max_pulse_us: 2000.0
+    #
+    # channel_4_min_pulse_us: 1000.0
+    # channel_4_max_pulse_us: 2000.0
+    #
+    # channel_5_min_pulse_us: 1000.0
+    # channel_5_max_pulse_us: 2000.0
+    #
+    # channel_6_min_pulse_us: 1000.0
+    # channel_6_max_pulse_us: 2000.0
+    #
+    # channel_7_min_pulse_us: 1000.0
+    # channel_7_max_pulse_us: 2000.0
+    #
+    # channel_8_min_pulse_us: 1000.0
+    # channel_8_max_pulse_us: 2000.0
+    #
+    # channel_9_min_pulse_us: 1000.0
+    # channel_9_max_pulse_us: 2000.0
+    #
+    # channel_10_min_pulse_us: 1000.0
+    # channel_10_max_pulse_us: 2000.0
+    #
+    # channel_11_min_pulse_us: 1000.0
+    # channel_11_max_pulse_us: 2000.0
+    #
+    # channel_12_min_pulse_us: 1000.0
+    # channel_12_max_pulse_us: 2000.0
+    #
+    # channel_13_min_pulse_us: 1000.0
+    # channel_13_max_pulse_us: 2000.0
+    #
+    # channel_14_min_pulse_us: 1000.0
+    # channel_14_max_pulse_us: 2000.0
+    #
+    # channel_15_min_pulse_us: 1000.0
+    # channel_15_max_pulse_us: 2000.0
