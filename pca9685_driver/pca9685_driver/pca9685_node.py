@@ -86,10 +86,10 @@ class PCA9685Node(Node):
         self.add_on_set_parameters_callback(self._on_parameters_changed)
 
         self.get_logger().info(
-            "PCA9685 node ready — I2C bus %d, address 0x%02X, %.1f Hz",
-            self.get_parameter("i2c_bus").value,
-            self.get_parameter("i2c_address").value,
-            self._driver.frequency_hz,  # type: ignore[union-attr]
+            f"PCA9685 node ready — "
+            f"I2C bus {self.get_parameter("i2c_bus").value}, "
+            f"address 0x{self.get_parameter("i2c_address").value:02X}, "
+            f"{self._driver.frequency_hz:.1f} Hz"  #
         )
 
     # ── ROS2 lifecycle helpers ────────────────────────────────────────────────
